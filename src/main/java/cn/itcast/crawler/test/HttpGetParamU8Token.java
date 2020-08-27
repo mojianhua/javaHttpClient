@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class HttpGetParamU8Token {
     //U8token
@@ -18,20 +19,22 @@ public class HttpGetParamU8Token {
 //        //获取token
 //        String tokenUrl = "https://api.yonyouup.com/system/token";
 //        URIBuilder uriBuilder = new URIBuilder(tokenUrl);
-//        uriBuilder.setParameter("from_account","xxxx").
-//                setParameter("app_key","xxxxxx").
-//                setParameter("app_secret","xxxxx");
+//        uriBuilder.setParameter("from_account","lthink").
+//                setParameter("app_key","xxxx").
+//                setParameter("app_secret","xxxx");
 //
 //        String response = null;
 //        response = doGet(uriBuilder.build().toString());
+//        System.out.println(response);
+        //System.out.close();
 //
 //        //json转对象
 //        JSONTokener tokener = new JSONTokener(response);
 //        JSONObject object = (JSONObject) tokener.nextValue();
-//        //System.out.println(object.getString("errcode"));
+////        //System.out.println(object.getString("errcode"));
 //        String token = "";
 //        token = object.getJSONObject("token").getString("id");
-//
+//        System.out.println(token);
 //        System.out.println(token);
 //        //获取订单呢列表
 //        String orderUrl = "https://api.yonyouup.com/api/saleorderlist/batch_get";
@@ -46,29 +49,123 @@ public class HttpGetParamU8Token {
 //
 //        JSONTokener tokener2 = new JSONTokener(orderList);
 //        JSONObject object2 = (JSONObject) tokener2.nextValue();
-//        //获取总订单数
+        //获取总订单数
 //        int page_count = 0;
 //        page_count = object2.getInt("page_count");
         for (int i = 1;i <= 1 ;i++){
             //获取订单呢列表
             String orderUrl = "https://api.yonyouup.com/api/saleorderlist/batch_get";
             URIBuilder uriBuilder2 = new URIBuilder(orderUrl);
-            uriBuilder2.setParameter("from_account","xxxxx").
-                    setParameter("to_account","xxxx").
+            uriBuilder2.setParameter("from_account","lthink").
+                    setParameter("to_account","lthink").
                     setParameter("app_key","xxxxxx").
-                    setParameter("token","xxxxxx").
+                    setParameter("token","xxxx").
                     setParameter("page_index",  Integer.toString(i)).
                     setParameter("rows_per_page","20");
             String orderList = "";
             orderList = doGet(uriBuilder2.build().toString());
 
-            JSONTokener tokener2 = new JSONTokener(orderList);
-            JSONObject object2 = (JSONObject) tokener2.nextValue();
-            //获取总订单数
-            int page_count = 0;
-            page_count = object2.getInt("page_count");
-            for(int j= 0; j<object2.getJSONArray("saleorderlist").length();j++){
-                  System.out.println(object2.getJSONArray("saleorderlist").get(j));
+            JSONTokener orderListtokener = new JSONTokener(orderList);
+            JSONObject orderListObject = (JSONObject) orderListtokener.nextValue();
+            for(int j= 0; j < orderListObject.getJSONArray("saleorderlist").length();j++){
+                String OrderListInfo = orderListObject.getJSONArray("saleorderlist").get(j).toString();
+                JSONTokener listInfoTokener = new JSONTokener(OrderListInfo);
+                JSONObject listInfoObject = (JSONObject) listInfoTokener.nextValue();
+                System.out.println(listInfoObject);
+
+                if(listInfoObject.has("businesstype")){
+                    System.out.println(listInfoObject.getString("businesstype"));
+                }
+
+                if(listInfoObject.has("typecode")){
+                    System.out.println(listInfoObject.getString("typecode"));
+                }
+
+                if(listInfoObject.has("typename")){
+                    System.out.println(listInfoObject.getString("typename"));
+                }
+
+                if(listInfoObject.has("state")){
+                    System.out.println(listInfoObject.getString("state"));
+                }
+
+                if(listInfoObject.has("custcode")){
+                    System.out.println(listInfoObject.getString("custcode"));
+                }
+
+                if(listInfoObject.has("cusname")){
+                    System.out.println(listInfoObject.getString("cusname"));
+                }
+
+                if(listInfoObject.has("cusabbname")){
+                    System.out.println(listInfoObject.getString("cusabbname"));
+                }
+
+                if(listInfoObject.has("deptcode")){
+                    System.out.println(listInfoObject.getString("deptcode"));
+                }
+
+                if(listInfoObject.has("deptname")){
+                    System.out.println(listInfoObject.getString("deptname"));
+                }
+
+                if(listInfoObject.has("personcode")){
+                    System.out.println(listInfoObject.getString("personcode"));
+                }
+
+                if(listInfoObject.has("personname")){
+                    System.out.println(listInfoObject.getString("personname"));
+                }
+
+                if(listInfoObject.has("dpremodatebt")){
+                    System.out.println(listInfoObject.getString("dpremodatebt"));
+                }
+
+                if(listInfoObject.has("dpredatebt")){
+                    System.out.println(listInfoObject.getString("dpredatebt"));
+                }
+
+                if(listInfoObject.has("sendaddress")){
+                    System.out.println(listInfoObject.getString("sendaddress"));
+                }
+
+                if(listInfoObject.has("ccusperson")){
+                    System.out.println(listInfoObject.getString("ccusperson"));
+                }
+
+                if(listInfoObject.has("ccuspersoncode")){
+                    System.out.println(listInfoObject.getString("ccuspersoncode"));
+                }
+
+                if(listInfoObject.has("caddcode")){
+                    System.out.println(listInfoObject.getString("caddcode"));
+                }
+
+                if(listInfoObject.has("memo")){
+                    System.out.println(listInfoObject.getString("memo"));
+                }
+
+                if(listInfoObject.has("money")){
+                    System.out.println(listInfoObject.getString("money"));
+                }
+
+                if(listInfoObject.has("sum")){
+                    System.out.println(listInfoObject.getString("sum"));
+                }
+
+                if(listInfoObject.has("maker")){
+                    System.out.println(listInfoObject.getString("maker"));
+                }
+
+                if(listInfoObject.has("verifier")){
+                    System.out.println(listInfoObject.getString("verifier"));
+                }
+
+                if(listInfoObject.has("closer")){
+                    System.out.println(listInfoObject.getString("closer"));
+                }
+
+                System.out.println("------------------------------------------");
             }
         }
     }
