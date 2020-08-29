@@ -2,6 +2,7 @@ package cn.itcast.crawler.test;
 
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -47,6 +48,12 @@ public class JsoupFirstTest {
 
         //从元素中获取属性的attr
         str = element.attr("class");
+
+        //从元素中获取所有属性attributes
+        Attributes attributes = element.attributes();
+        System.out.println(attributes.toString());
+
+
         System.out.println("获取到的数据是：" + str);
         //System.out.println(content);
     }
