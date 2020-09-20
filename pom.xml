@@ -13,7 +13,7 @@
     <groupId>cn.incas</groupId>
     <artifactId>itcast-craw-first</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+
     <dependencies>
         <!-- SpringMVC -->
         <dependency>
@@ -108,11 +108,6 @@
             <groupId>javax.activation</groupId>
             <artifactId>javax.activation-api</artifactId>
             <version>1.2.0</version>
-        </dependency>
-        <dependency>
-    　　　　　　<groupId>org.hibernate</groupId>
-    　　　　　　<artifactId>hibernate-entitymanager</artifactId>
-    　　　　　　<version>5.0.3.Final</version>
         </dependency>
         <dependency>
             <groupId>net.sf.json-lib</groupId>
